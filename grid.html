@@ -24,7 +24,7 @@ body {
   margin-left: 5%;
   margin-right: 5%;
   display: grid;
-  grid-template-rows: 3em 20px [main-start] 150px 300px 5em [main-end];
+  grid-template-rows: 3em 20px [main-start] 150px auto 5em [main-end];
   grid-template-columns: [main-start] 1fr [main-end] repeat(3, 20px 150px);
 	
 }
@@ -75,6 +75,12 @@ nav ul li a {
   padding: .5em 1em;
   margin: .5em; 
 }
+nav {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 8; /*could also have used -1*/
+}
 
 
 /* main styles */
@@ -86,8 +92,10 @@ main {
   padding: 1em;
   border: double 4px #EADDC4;
   border-radius: 25px;
+  grid-row: main-start / main-end;
+  grid-column: main-start / main-end;
+  /*grid-area: main; could also use this code instead of grid-row and grid-column in this instance*/
 }
-
 
 /* misc styles */
 
@@ -96,12 +104,24 @@ figure {
   padding: 0;'
    /* clears browser styles for figures */
 }
+#figC {
+  grid-row: 3 / 4;
+  grid-column: span 1 / -1;
+}
+#figA {
+  grid-area: 3 / 3 / 4 / 4;
+}
+#figB {
+  grid-area: 3 / 5 / 4 / 6;
+}
 
 footer {
   color: #EADDC4;
   text-align: center;
   font-size: .8em;
   padding: .5em;
+  grid-row: 5 / 6;
+  grid-column: 3 / -1;
 }
 
 </style>
